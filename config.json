@@ -1,11 +1,26 @@
 { 
-  "token": "BOT TOKEN HERE",
-  "supportRole": "Moderator",
-  "categories": {
-    "support": "CATEGORY ID FOR SUPPORT",
-    "appeal": "CATEGORY ID FOR APPEALS"
-  },
-  "channels": {
-    "support": "SUPPORT CHANNEL ID HERE"
+  "token": "Bot Token",
+  "supportChannelId": "Support Channel ID",
+  "welcomeMessageContents": "Welcome to Hysummit Community Support! React with the appropriate emoji to create a support ticket to meet your needs.",
+  "welcomeMessageFooter": "Thank you for your patience",
+  "ticketTypes": {
+    "support": {
+      "title": "support-ticket-%username%",
+      "parent": "Category ID",
+      "permitAll": "Moderator",
+      "reaction": "✅",
+      "reactionDescription": "Server Help & Support",
+      "messageBody": "Support ticket created! Someone from our staff will be right with you. Feel free to mention any relevant details that we'll need to know to help you.",
+      "messageFooter": "Ticket created by %username%"
+    },
+    "appeals": {
+      "title": "appeal-ticket-%username%",
+      "parent": "Category ID",
+      "permitAll": "Moderator",
+      "reaction": "🔨",
+      "reactionDescription": "Request a Ban Appeal",
+      "messageBody": "Ban Appeal ticket created! Someone from our staff will be right with you. Feel free to mention any relevant details that we'll need to know to help you.",
+      "messageFooter": "Ticket created by %username%"
+    }
   }
 }
