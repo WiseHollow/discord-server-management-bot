@@ -1,0 +1,11 @@
+{ 
+  "token": "BOT TOKEN HERE",
+  "supportRole": "Moderator",
+  "categories": {
+    "support": "CATEGORY ID FOR SUPPORT",
+    "appeal": "CATEGORY ID FOR APPEALS"
+  },
+  "channels": {
+    "support": "SUPPORT CHANNEL ID HERE"
+  }
+}
