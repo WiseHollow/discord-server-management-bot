@@ -93,6 +93,24 @@ function registerReactionEvents() {
     });
 }
 
+function sendCreatedTicketQuote(createdChannel, user) {
+    const supportChannel = getSupportChannel();
+
+    const seconds = config.supportTicketCreatedNoticeLifetime / 1000;
+    const messageBody = config.supportTicketCreatedBody.replace("%channel%", "<#" + createdChannel.id + ">").replace("%user%", "<@" + user.id + ">");
+    const messageFooter = config.supportTicketCreatedFooter.replace("%seconds%", seconds);
+
+    const embeddedMessage = new Discord.RichEmbed()
+        .setDescription(messageBody)
+        .setFooter(messageFooter);
+    
+    supportChannel.send(embeddedMessage).then(message => {
+        setTimeout(function() {
+            message.delete();
+        }, config.supportTicketCreatedNoticeLifetime);
+    })
+}
+
 function createChannelForTicketType(guild, ticketType, user) {
     const channelName = ticketType.title.replace("%username%", user.username).toLowerCase();
     const messageBody = ticketType.messageBody.replace("%username%", user.username);
@@ -130,6 +148,8 @@ function createChannelForTicketType(guild, ticketType, user) {
 
             channel.setParent(parent.id);
             channel.send(embeddedMessage);
+
+            sendCreatedTicketQuote(channel, user);
         }).catch(console.error);
     }
 }
